@@ -11,12 +11,13 @@ public class Main {
     static Map<String, ArrayList<Integer>> phoneBook = new HashMap<>();
 
     public static void main(String[] args) {
+        // Заранее делаем переменные, чтобы программа не тратила на них время в цикле.
         PhoneBook phoneBook1 = new PhoneBook();
         char ans = ' ';
         int count = 0;
         Integer num = null;
         String name = null;
-        while(true) {
+        while(true) { // Создаем цикл, для эффекта меню
             Scanner scanner = new Scanner(System.in);
             System.out.println("Menu: ");
             System.out.println("1. Add contact");
@@ -26,12 +27,12 @@ public class Main {
             System.out.println();
             System.out.println("Enter number of action: ");
             try {
-                ans = (char) scanner.nextInt();
+                ans = (char) scanner.nextInt(); // Вводим номер действия
             } catch (java.util.InputMismatchException e) {
                 System.out.println();
             }
             System.out.println();
-            if (ans == 1) {
+            if (ans == 1) { // Добавление контакта
                 System.out.println("Enter name: ");
                 name = scanner.next();
                 System.out.println("Enter number: ");
@@ -56,7 +57,7 @@ public class Main {
 class PhoneBook {
     private static HashMap<String, ArrayList<Integer>> phoneBook = new HashMap<>();
 
-    public void add(String name, Integer num) {
+    public void add(String name, Integer num) { // Функция для добавления контакта.
         ArrayList<Integer> nums = new ArrayList<>();
         int count = 0;
         if (phoneBook.get(name) != null) {
@@ -71,12 +72,12 @@ class PhoneBook {
         }
     }
 
-    public ArrayList<Integer> find(String name) {
+    public ArrayList<Integer> find(String name) { // Функция для поиска контакта.
         if (!phoneBook.containsKey(name)) return new ArrayList<>();
         return phoneBook.get(name);
     }
 
-    public static HashMap<String, ArrayList<Integer>> getPhoneBook() {
+    public static HashMap<String, ArrayList<Integer>> getPhoneBook() { // Функция для вывода справочника.
         HashMap<String, ArrayList<Integer>> map = new HashMap<>();
         for(String name : phoneBook.keySet()) {
             map.put(name, phoneBook.get(name));
